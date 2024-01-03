@@ -28,11 +28,13 @@ public class ControllerService {
     public void reportCurrentTime() {
 //        System.out.println("soil moisture: " + getSoilMoisture());
         setWatering();
+        setLighting();
+//        System.out.println("lighting: " + getLighting());
     }
     public int getSoilMoisture() {
         OrchestrationResponseDTO orchestrationResponse = orchestrationResponse(ControllerConstants.GET_MOISTURE_SERVICE_DEFINITION);
-        logger.info("Orchestration response:");
-        printOut(orchestrationResponse);
+//        logger.info("Orchestration response:");
+//        printOut(orchestrationResponse);
 
         if (orchestrationResponse == null) {
             logger.info("No orchestration response received");
@@ -42,7 +44,7 @@ public class ControllerService {
             final OrchestrationResultDTO orchestrationResult = orchestrationResponse.getResponse().get(0);
             validateOrchestrationResult(orchestrationResult, ControllerConstants.GET_MOISTURE_SERVICE_DEFINITION);
 
-            logger.info("Get soil moisture");
+//            logger.info("Get soil moisture");
             final String token = orchestrationResult.getAuthorizationTokens() == null ? null : orchestrationResult.getAuthorizationTokens().get(getInterface());
             @SuppressWarnings("unchecked")
             final int moisture = arrowheadService.consumeServiceHTTP(Integer.class, HttpMethod.GET,
@@ -58,9 +60,9 @@ public class ControllerService {
         OrchestrationResponseDTO orchestrationResponseOn = orchestrationResponse(ControllerConstants.GET_WATERING_SERVICE_ON_DEFINITION);
         OrchestrationResponseDTO orchestrationResponseOff = orchestrationResponse(ControllerConstants.GET_WATERING_SERVICE_OFF_DEFINITION);
 
-        logger.info("Orchestration response:");
-        printOut(orchestrationResponseOn);
-        printOut(orchestrationResponseOff);
+//        logger.info("Orchestration response:");
+//        printOut(orchestrationResponseOn);
+//        printOut(orchestrationResponseOff);
 
         if (orchestrationResponseOff == null || orchestrationResponseOn == null) {
             logger.info("No orchestration response received");
@@ -73,7 +75,7 @@ public class ControllerService {
             final OrchestrationResultDTO orchestrationResultOff = orchestrationResponseOff.getResponse().get(0);
             validateOrchestrationResult(orchestrationResultOff, ControllerConstants.GET_WATERING_SERVICE_OFF_DEFINITION);
 
-            logger.info("Get watering system");
+//            logger.info("Get watering system");
             final String tokenOn = orchestrationResultOn.getAuthorizationTokens() == null ? null : orchestrationResultOn.getAuthorizationTokens().get(getInterface());
             final String tokenOff = orchestrationResultOff.getAuthorizationTokens() == null ? null : orchestrationResultOff.getAuthorizationTokens().get(getInterface());
 
@@ -93,8 +95,60 @@ public class ControllerService {
         }
     }
 
+    public int getLighting(){
+        OrchestrationResponseDTO orchestrationResponse = orchestrationResponse(ControllerConstants.GET_LIGHTINGSENSOR_SERVICE_DEFINITION);
+//        logger.info("Orchestration response:");
+//        printOut(orchestrationResponse);
+
+        if (orchestrationResponse == null) {
+            logger.info("No orchestration response received");
+        } else if (orchestrationResponse.getResponse().isEmpty()) {
+            logger.info("No provider found during the orchestration");
+        } else {
+            final OrchestrationResultDTO orchestrationResult = orchestrationResponse.getResponse().get(0);
+            validateOrchestrationResult(orchestrationResult, ControllerConstants.GET_LIGHTINGSENSOR_SERVICE_DEFINITION);
+
+//            logger.info("Get soil lighting");
+            final String token = orchestrationResult.getAuthorizationTokens() == null ? null : orchestrationResult.getAuthorizationTokens().get(getInterface());
+            @SuppressWarnings("unchecked")
+            final int light = arrowheadService.consumeServiceHTTP(Integer.class, HttpMethod.GET,
+                    orchestrationResult.getProvider().getAddress(), orchestrationResult.getProvider().getPort(), orchestrationResult.getServiceUri(),
+                    getInterface(), token, null, new String[0]);
+
+            System.out.println("Light levels: " + light);
+            return light;
+        }
+        return -1;
+    }
+    public void setLighting(){
+        OrchestrationResponseDTO orchestrationResponse = orchestrationResponse(ControllerConstants.GET_LIGHTING_SERVICE_DEFINITION);
+
+//        logger.info("Orchestration response:");
+//        printOut(orchestrationResponse);
+
+        if (orchestrationResponse == null) {
+            logger.info("No orchestration response received");
+        } else if (orchestrationResponse.getResponse().isEmpty()) {
+            logger.info("No provider found during the orchestration");
+        } else {
+            final OrchestrationResultDTO orchestrationResult = orchestrationResponse.getResponse().get(0);
+            validateOrchestrationResult(orchestrationResult, ControllerConstants.GET_LIGHTING_SERVICE_DEFINITION);
+
+            final String token = orchestrationResult.getAuthorizationTokens() == null ? null : orchestrationResult.getAuthorizationTokens().get(getInterface());
+
+            if (getLighting() < 50) {
+                logger.info("Lighting system on");
+                arrowheadService.consumeServiceHTTP(String.class, HttpMethod.POST,
+                        orchestrationResult.getProvider().getAddress(), orchestrationResult.getProvider().getPort(), orchestrationResult.getServiceUri(),
+                        getInterface(), token, null,  new String[0]);
+            }
+            else {
+                printOut("Lighting levels are good");
+            }
+        }
+    }
     private OrchestrationResponseDTO orchestrationResponse(String service){
-        logger.info("Orchestration request for " + service + " service:");
+//        logger.info("Orchestration request for " + service + " service:");
         final ServiceQueryFormDTO serviceQueryForm = new ServiceQueryFormDTO.Builder(service)
                 .interfaces(getInterface())
                 .build();
@@ -103,12 +157,12 @@ public class ControllerService {
         final OrchestrationFormRequestDTO orchestrationFormRequest = orchestrationFormBuilder.requestedService(serviceQueryForm)
                 .build();
 
-        printOut(orchestrationFormRequest);
+//        printOut(orchestrationFormRequest);
 
         final OrchestrationResponseDTO orchestrationResponse = arrowheadService.proceedOrchestration(orchestrationFormRequest);
 
-        logger.info("Orchestration response:");
-        printOut(orchestrationResponse);
+//        logger.info("Orchestration response:");
+//        printOut(orchestrationResponse);
         return orchestrationResponse;
     }
     private String getInterface() {

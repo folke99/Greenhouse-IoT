@@ -1,0 +1,10 @@
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/configuration/ContainerConfiguration.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/security/ProviderTokenSecurityFilter.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/security/ProviderAccessControlFilter.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/ai/aitia/greenhouse/lightsensor/LightSensorMain.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/ai/aitia/greenhouse/lightsensor/LightSensorConstants.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/ai/aitia/greenhouse/lightsensor/controller/LightSensorController.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/configuration/ContainerConfProperties.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/security/ProviderSecurityConfig.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/configuration/ConfigConstants.java
+/Users/folke/Desktop/git/Arrowhead/Greenhouse-IoT/lightsensor-provider/src/main/java/eu/arrowhead/application/skeleton/provider/ProviderApplicationInitListener.java

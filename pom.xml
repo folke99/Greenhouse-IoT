@@ -26,7 +26,9 @@
 	<modules>
 	    <module>controller-consumer</module>
 	    <module>soilsensor-provider</module>
-		<module>wateringsystem-provider</module>
+<!--		<module>wateringsystem-provider</module>-->
+		<module>lightsensor-provider</module>
+		<module>hardwaresystems-provider</module>
   	</modules>
 	
 	<dependencies>

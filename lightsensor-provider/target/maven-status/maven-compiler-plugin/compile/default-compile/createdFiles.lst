@@ -1,0 +1,10 @@
+ai/aitia/greenhouse/lightsensor/controller/LightSensorController.class
+eu/arrowhead/application/skeleton/provider/security/ProviderTokenSecurityFilter.class
+ai/aitia/greenhouse/lightsensor/LightSensorMain.class
+eu/arrowhead/application/skeleton/provider/security/ProviderSecurityConfig.class
+eu/arrowhead/application/skeleton/provider/ProviderApplicationInitListener.class
+eu/arrowhead/application/skeleton/provider/configuration/ConfigConstants.class
+eu/arrowhead/application/skeleton/provider/security/ProviderAccessControlFilter.class
+ai/aitia/greenhouse/lightsensor/LightSensorConstants.class
+eu/arrowhead/application/skeleton/provider/configuration/ContainerConfProperties.class
+eu/arrowhead/application/skeleton/provider/configuration/ContainerConfiguration.class

@@ -11,7 +11,7 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
-import ai.aitia.greenhouse.wateringsystem.WateringsystemConstants;
+import ai.aitia.greenhouse.hardwaresystems.WateringsystemConstants;
 import eu.arrowhead.common.dto.shared.ServiceRegistryRequestDTO;
 import eu.arrowhead.common.dto.shared.ServiceSecurityType;
 import eu.arrowhead.common.dto.shared.SystemRequestDTO;
@@ -32,7 +32,7 @@ import eu.arrowhead.common.Utilities;
 import eu.arrowhead.common.core.CoreSystem;
 import eu.arrowhead.common.exception.ArrowheadException;
 
-import static ai.aitia.greenhouse.wateringsystem.WateringsystemConstants.*;
+import static ai.aitia.greenhouse.hardwaresystems.WateringsystemConstants.*;
 
 @Component
 public class ProviderApplicationInitListener extends ApplicationInitListener {

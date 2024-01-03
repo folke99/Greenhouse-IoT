@@ -1,0 +1,10 @@
+eu/arrowhead/application/skeleton/consumer/security/ProviderTokenSecurityFilter.class
+ai/aitia/greenhouse/controller/ControllerMain.class
+ai/aitia/greenhouse/controller/ControllerConstants.class
+eu/arrowhead/application/skeleton/consumer/security/ProviderSecurityConfig.class
+eu/arrowhead/application/skeleton/consumer/configuration/ContainerConfiguration.class
+eu/arrowhead/application/skeleton/consumer/security/ProviderAccessControlFilter.class
+eu/arrowhead/application/skeleton/consumer/configuration/ConfigConstants.class
+eu/arrowhead/application/skeleton/consumer/configuration/ContainerConfProperties.class
+ai/aitia/greenhouse/controller/ControllerService.class
+eu/arrowhead/application/skeleton/consumer/ConsumerApplicationInitListener.class
